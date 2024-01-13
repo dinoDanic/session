@@ -1,6 +1,8 @@
 <script lang="ts">
-	import type { SessiontPageParams } from './index';
-	export let data: SessiontPageParams;
+	import { type Session } from '../../be/api';
+	import PanelBuilder from '../../features/panel/panel-builder.svelte';
+	export let data: Session | undefined;
+	$: panels = data?.panels || [];
 </script>
 
-<div>{data.params.session_id}</div>
+<PanelBuilder {panels} />
