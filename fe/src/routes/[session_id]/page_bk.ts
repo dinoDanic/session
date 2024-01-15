@@ -1,9 +1,9 @@
-import type { SessiontPageParams } from '.';
+import type { SessionPageParams } from '.';
 import { get_sessions, type Session } from '../../be/api';
 
 export type SessionByIdPageResponse = {
   session?: Session;
-} & SessiontPageParams;
+} & SessionPageParams;
 
 export async function load({ params }: SessiontPageParams): Promise<SessionByIdPageResponse> {
   const res = await get_sessions();

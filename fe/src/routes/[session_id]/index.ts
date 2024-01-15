@@ -1,4 +1,4 @@
-export type SessiontPageParams = {
+export type SessionPageParams = {
 	params: {
 		session_id: string;
 	};

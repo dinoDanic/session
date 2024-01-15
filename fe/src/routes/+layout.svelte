@@ -17,21 +17,23 @@
 
 	const _onkeyDown = (e: KeyboardEvent) => {
 		const { key } = e;
-    console.log('key', key)
 		if (isStringANumber(key)) {
 			goto(key);
-
 		} else {
 			if (!currentSession) return;
-			if (key === 'h' || key === "ArrowLeft") {
-				sessionStore.updateHover(currentSession?.id, 'left');
-			} else if (key === 'l' || key === "ArrowRight") {
-				sessionStore.updateHover(currentSession?.id, 'right');
-			} else if (key === 'k' || key === "ArrowUp") {
-				sessionStore.updateHover(currentSession?.id, 'up');
-			} else if (key === "j" || key === "ArrowDown") {
-				sessionStore.updateHover(currentSession?.id, 'down');
-      }
+			if (key === 'h' || key === 'ArrowLeft') {
+				sessionStore.updateFocus(currentSession.id, 'left');
+			} else if (key === 'l' || key === 'ArrowRight') {
+				sessionStore.updateFocus(currentSession.id, 'right');
+			} else if (key === 'k' || key === 'ArrowUp') {
+				sessionStore.updateFocus(currentSession.id, 'up');
+			} else if (key === 'j' || key === 'ArrowDown') {
+				sessionStore.updateFocus(currentSession.id, 'down');
+			} else if (key === 'n') {
+				sessionStore.newPanel(currentSession.id);
+			} else if (key === 'x') {
+				sessionStore.removePanel(currentSession.id);
+			}
 		}
 	};
 </script>

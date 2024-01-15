@@ -8,7 +8,6 @@
 	let sessions: Session[] = [];
 
 	sessionStore.subscribe((store) => {
-		console.log('store', store);
 		sessions = store.sessions;
 	});
 </script>

@@ -10,7 +10,7 @@
 	sessionStore.subscribe((store) => {
 		const session = store.sessions.find((s) => s.id === sessionId);
 		if (session) {
-			if (session.hover.id === panel.id && session.hover.type === 'panel') {
+			if (session.focus.id === panel.id && session.focus.type === 'panel') {
 				isFocused = true;
 			} else isFocused = false;
 		}

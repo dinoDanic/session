@@ -2,7 +2,7 @@ export type Session = {
   name: string;
   id: string;
   panels: PanelType[];
-  hover: Hover;
+  focus: Focus;
 };
 
 export type PanelType = {
@@ -11,10 +11,10 @@ export type PanelType = {
   position: number;
 };
 
-export type HoverType = 'panel';
+export type FocusType = 'panel';
 
-export type Hover = {
-  type: HoverType | null;
+export type Focus = {
+  type: FocusType | null;
   id: string | null;
 };
 
@@ -29,7 +29,7 @@ export const get_sessions: () => Promise<GetSessionsResponse> = async () => {
       {
         id: '1',
         name: 'personal',
-        hover: { type: 'panel', id: '1-5' },
+        focus: { type: 'panel', id: '1-5' },
         panels: [
           { id: '1-1', name: 'panel 1', position: 1 },
           { id: '1-2', name: 'panel 2', position: 2 },
@@ -41,19 +41,19 @@ export const get_sessions: () => Promise<GetSessionsResponse> = async () => {
       {
         id: '2',
         name: 'free form',
-        hover: { type: 'panel', id: '2-2' },
+        focus: { type: 'panel', id: '2-2' },
         panels: [
           { id: '2-1', name: 'panel 1', position: 1 },
           { id: '2-2', name: 'panel 2', position: 2 },
           { id: '2-3', name: 'panel 3', position: 3 },
           { id: '2-4', name: 'panel 4', position: 4 },
-          { id: '2-5', name: 'panel 5', position: 5 },
+          { id: '2-5', name: 'panel 5', position: 5 }
         ]
       },
       {
         id: '3',
         name: 'job',
-        hover: { type: 'panel', id: '3-2' },
+        focus: { type: 'panel', id: '3-2' },
         panels: [
           { id: '3-1', name: 'panel 1', position: 1 },
           { id: '3-2', name: 'panel 2', position: 2 },
@@ -67,7 +67,6 @@ export const get_sessions: () => Promise<GetSessionsResponse> = async () => {
           { id: '3-10', name: 'panel 10', position: 10 },
           { id: '3-11', name: 'panel 11', position: 11 },
           { id: '3-12', name: 'panel 12', position: 12 }
-
         ]
       }
     ]
