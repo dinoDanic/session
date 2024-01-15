@@ -1,13 +1,16 @@
 <script lang="ts">
-	import type { Session } from '../../../be/api';
+	import { get_sessions, type Session } from '../../../be/api';
 	import SessionBarItem from './session-bar-item.svelte';
-	export let sessions: Session[];
+	import { sessionStore } from '../store';
+
 	export let currentSessionId: string;
 
-	function onKeyDown(e: KeyboardEvent) {
-		console.log(e, 'eeeeeeeeeeee');
-		window.location = sessions.at(e.key - 1)?.id || '';
-	}
+	let sessions: Session[] = [];
+
+	sessionStore.subscribe((store) => {
+		console.log('store', store);
+		sessions = store.sessions;
+	});
 </script>
 
 <div class="flex gap-2 bg-secondary">
@@ -17,5 +20,3 @@
 		</a>
 	{/each}
 </div>
-
-<svelte:window on:keydown|preventDefault={onKeyDown} />

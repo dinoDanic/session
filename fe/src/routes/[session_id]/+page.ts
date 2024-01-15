@@ -1,7 +1,15 @@
 import type { SessiontPageParams } from '.';
-import { get_sessions } from '../../be/api';
+import { get_sessions, type Session } from '../../be/api';
 
-export async function load({ params }: SessiontPageParams) {
-	const findSessionById = get_sessions.find((session) => session.id === params.session_id);
-	return  findSessionById
+export type SessionByIdPageResponse = {
+  session?: Session;
+} & SessiontPageParams;
+
+export async function load({ params }: SessiontPageParams): Promise<SessionByIdPageResponse> {
+  const res = await get_sessions();
+  const findSessionById = res.sessions.find((session) => session.id === params.session_id);
+  return {
+    session: findSessionById,
+    params: params
+  };
 }

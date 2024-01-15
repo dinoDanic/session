@@ -1,9 +1,17 @@
-import { get_sessions } from '../be/api';
+import { get_sessions, type GetSessionsResponse } from '../be/api';
 
-export function load({ params }) {
-	const sessions = get_sessions;
+type SessionPageParams = {
+	params: {
+		session_id: string;
+	};
+};
+
+export type MainLayoutResponse = GetSessionsResponse & SessionPageParams;
+
+export async function load({ params }: SessionPageParams): Promise<MainLayoutResponse> {
+	const res = await get_sessions();
 	return {
-		sessions: sessions,
-		currentSessionId: params.session_id
+		sessions: res.sessions,
+		params: params
 	};
 }

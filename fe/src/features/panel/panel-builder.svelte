@@ -3,11 +3,11 @@
 	import Panel from '../panel/panel.svelte';
 
 	export let panels: PanelType[];
-	$: panelsCount = panels.length;
+	export let sessionId: string;
 </script>
 
 <div class="flex h-full flex-wrap gap-1">
-	{#each panels as panel, index (panel.id)}
-		<Panel {panel} {index} {panelsCount} />
+	{#each panels as panel (panel.id)}
+		<Panel {panel} {sessionId} />
 	{/each}
 </div>

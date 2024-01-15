@@ -10,8 +10,13 @@
 </script>
 
 <div class="flex items-center justify-center gap-2">
-	<div class={cn('flex w-8  items-center justify-center', isActive && 'bg-orange-50')}>
-		<p class="text-black text-sm">{index}</p>
+	<div
+		class={cn(
+			'flex w-8  items-center justify-center bg-accent text-primary-foreground',
+			isActive && 'bg-primary'
+		)}
+	>
+		<p class="text-sm">{index}</p>
 	</div>
 	<div>{session.name}</div>
 </div>
