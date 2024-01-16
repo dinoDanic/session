@@ -1,0 +1,8 @@
+<h1>Create a new link</h1>
+<br />
+<.form for={@form} class="space-y-4" phx-submit="submit">
+  <.input field={@form[:url]} type="text" label="url" />
+  <div class="flex  justify-end">
+    <.button>create</.button>
+  </div>
+</.form>
