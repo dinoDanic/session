@@ -8,7 +8,8 @@ defmodule DemoWeb.LinkLive.Index do
 
     socket =
       socket
-      |> assign(:links, Links.list_links(user_id))
+      |> assign(:links, Links.list_links())
+    
       |> assign(
         :form,
         to_form(changeset)
